@@ -1,0 +1,46 @@
+<project name="Heap" default="compile" basedir=".">
+
+  <property name="main.class" value="tests.PQueueTest" />
+  <property name="program.jar" value="heap.jar" />
+
+  <target name="compile" description="Compile Java sources">
+    <javac srcdir="src" destdir="bin" includeantruntime="false">
+      <include name="**/*.java" />
+    </javac>
+  </target>
+
+  <target name="run"
+          depends="compile"
+          description="Run Java Application">
+    <java classname="${main.class}" fork="true" classpath="bin">
+      <assertions>  <enable />  </assertions>
+    </java>
+  </target>
+
+  <target name="jar"
+          depends="compile"
+          description="Create Java Package">
+    <jar destfile="${program.jar}">
+      <fileset dir="bin" includes="**/*.class" />
+      <manifest>
+        <attribute name="main-class" value="${main.class}" />
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="runjar"
+          depends="jar"
+          description="Run the JAR">
+    <java jar="${program.jar}" fork="true" classpath=".">
+      <assertions>  <enable />  </assertions>
+    </java>
+  </target>
+
+  <target name="clean"
+          description="Delete all build artefacts">
+    <delete>
+      <fileset dir="bin" includes="**/*.class" />
+    </delete>
+  </target>
+
+</project>
