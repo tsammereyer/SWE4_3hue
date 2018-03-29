@@ -1,5 +1,5 @@
 # Binary Heap and DHeap
-implementation of a Binary Heap and DHeap in Java
+implementation of a Binary Heap and DHeap in Java  
 for building check out the build.xml -> ant must be installed on your pc
 
 ## Commands to run the Code
@@ -9,5 +9,5 @@ for building check out the build.xml -> ant must be installed on your pc
 "ant clean" deletes all build artefacts  
 
 ## Algorithm duration
-The duration is calculatet with System.nanoTime();  
-values in milliseconds
+The duration is calculated with System.nanoTime();  
+values are in milliseconds
