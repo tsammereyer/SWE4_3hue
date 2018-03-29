@@ -9,7 +9,6 @@ import java.util.Arrays;
 public class DHeapQueue<T extends Comparable<T>> {
     ArrayList<Integer> values;
     int d;
-    public int total; // helper for heapify stuff
 
     public DHeapQueue(int d) {
         values = new ArrayList<Integer>();
