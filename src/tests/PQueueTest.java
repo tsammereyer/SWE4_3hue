@@ -3,13 +3,14 @@ package tests;
 import java.util.Random;
 
 import queues.BinaryHeapQueue;
-import queues.Heap;
+import queues.DHeapQueue;
 
 public class PQueueTest {
 
   public static void main(String[] args) {
     testBinaryHeapQueue();
-    //testHeap();
+    System.out.println("\n-----------------------------------------------------------\n");
+    testDHeapQueue();
   }
 
   public static void testBinaryHeapQueue() {
@@ -69,28 +70,66 @@ public class PQueueTest {
     h.printHeapWithSpaces();
   }
 
-  public static void testHeap() {
-    Heap<Integer> h = new Heap<Integer>();
-    System.out.println(h);
-    h.enqueue(1);
-    System.out.println(h);
-    h.enqueue(2);
-    System.out.println(h);
+  public static void testDHeapQueue() {
+    DHeapQueue<Integer> h = new DHeapQueue<Integer>(3);
+    
+    //int [] values = {4, 2, 0, 0, 5, 4, 2, 0, 1, 7};
+    //h.insertUnordered(values);
 
-    Random r = new Random();
-    for (int i = 0; i < 10; i++) {
-      h.enqueue(r.nextInt(10));
-    }
-    System.out.println(h);
+    h.insertUnordered(6);
+    h.insertUnordered(0);
+    h.insertUnordered(3);
+    h.insertUnordered(8);
+    h.insertUnordered(1);
+    h.insertUnordered(8);
+    h.insertUnordered(9);
+    h.insertUnordered(1);
+    h.insertUnordered(0);
+    h.insertUnordered(5);    
 
-    while (!h.isEmpty()) {
-      System.out.println(h.dequeue());
-    }
-    System.out.println(h);
+    System.out.println("un-hepified");
+    h.printHeapAsString();
+
+    System.out.println("\nheapified");
+    h.heapify();
+    h.printHeapAsString();
+
+    System.out.println("\nremove max");
+    h.removeMax();
+    h.printHeapAsString();
+
+    System.out.println("\nremove 3");
+    h.removeNLargest(3);
+    h.printHeapAsString();
+
+    System.out.println("\n3-largest");
+    printIntArray(h.nLargest(3));
+    h.printHeapAsString();
+
+    System.out.println("\nMax");
+    System.out.println("Max: " + h.max());
+    h.printHeapAsString();
+
+    System.out.println("\ninsertArray");
+    int [] arr = {1,5,3};
+    h.insertUnordered(arr);
+    h.printHeapAsString();
+
+
+
+    System.out.println("\nmergeWithOtherHeap");
+    DHeapQueue<Integer> h2 = new DHeapQueue<Integer>(3);
+    h2.insertUnordered(7);
+    h2.insertUnordered(13);
+    h2.insertUnordered(3);
+    System.out.print("new heap: ");
+    h2.printHeapAsString();
+    h.merge(h2);
+    h.printHeapAsString();
   }
 
 
-  public static void printIntArray(int [] arr){
+  private static void printIntArray(int [] arr){
     StringBuilder sb = new StringBuilder();
     sb.append("[ ");
     for (int s : arr) {
