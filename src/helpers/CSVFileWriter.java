@@ -5,7 +5,6 @@ import java.io.IOException;
 
 public class CSVFileWriter {
 
-	//Delimiter used in CSV file
 	private static final String NEW_LINE_SEPARATOR = "\n";
 
 	String[] fileHeader;

@@ -7,3 +7,7 @@ for building check out the build.xml -> ant must be installed on your pc
 "ant jar" creates Java Package  
 "ant runjar" runs the JAR  
 "ant clean" deletes all build artefacts  
+
+## Algorithm duration
+The duration is calculatet with System.nanoTime();  
+values in milliseconds
